@@ -1,0 +1,66 @@
+= Greeting REST Service API Guide
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+= Resources
+
+== Home REST Service
+
+The Home provides the entry point into the service.
+
+=== Accessing the home GET with provided content
+
+==== Request structure
+
+include::{snippets}/controller-test-mvc/home/http-request.adoc[]
+
+==== Request parameters
+
+include::{snippets}/controller-test-mvc/home/path-parameters.adoc[]
+
+==== Response fields
+
+include::{snippets}/controller-test-mvc/home/response-fields.adoc[]
+
+==== Example response
+
+include::{snippets}/controller-test-mvc/home/http-response.adoc[]
+
+==== CURL request
+
+include::{snippets}/controller-test-mvc/home/curl-request.adoc[]
+
+== Sum Test Service
+
+Sum test service body content
+
+
+=== Accessing the sum POST with provided content
+
+==== Request structure
+
+include::{snippets}/controller-test-mvc/sum/http-request.adoc[]
+
+==== Request parameters
+
+include::{snippets}/controller-test-mvc/sum/request-fields.adoc[]
+
+==== Response Structure
+
+include::{snippets}/controller-test-mvc/sum/http-response.adoc[]
+
+==== Response fields
+
+include::{snippets}/controller-test-mvc/sum/response-fields.adoc[]
+
+==== Example response
+
+include::{snippets}/controller-test-mvc/sum/http-response.adoc[]
+
+==== CURL request
+
+include::{snippets}/controller-test-mvc/sum/curl-request.adoc[]

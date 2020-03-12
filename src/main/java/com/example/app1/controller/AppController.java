@@ -5,6 +5,7 @@ import com.example.app1.model.ResponseModel;
 import com.example.app1.model.ServiceResponse;
 import com.example.app1.service.AppService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -12,8 +13,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/")
 public class AppController {
 
-    @Autowired
-    private AppService appService;
+    private final AppService appService;
+
+    public AppController(AppService appService) {
+
+        this.appService = appService;
+    }
 
     @PostMapping("/")
     ServiceResponse<ResponseModel> home(@RequestBody RequestModel req) {
@@ -25,14 +30,19 @@ public class AppController {
         return new ServiceResponse<String>(true,"Hello World!", null);
     }
 
-    @GetMapping("/{inp}")
+    @GetMapping("/home/{inp}")
     ServiceResponse<String> home(@PathVariable String inp) {
         return new ServiceResponse<String>(true, inp, null);
     }
 
+    @GetMapping("/home")
+    String homeAlone() {
+        return "Hello World!";
+    }
 
     @PostMapping("/sum")
     ServiceResponse<Integer> sum(@RequestBody RequestModel req) {
+
         return new ServiceResponse<Integer>(appService.sum(req.getNum1(), req.getNum2()));
     }
 

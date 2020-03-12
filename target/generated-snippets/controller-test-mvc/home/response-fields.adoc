@@ -1,0 +1,16 @@
+|===
+|Path|Type|Description
+
+|`+message+`
+|`+String+`
+|message of response
+
+|`+success+`
+|`+Boolean+`
+|success status of response
+
+|`+data+`
+|`+Null+`
+|data value of response
+
+|===

@@ -15,4 +15,8 @@ public class RequestModel {
     private int num1;
     private int num2;
 
+    @Override
+    public String toString() {
+        return "RequestModel{" + "param='" + param + '\'' + ", num1=" + num1 + ", num2=" + num2 + '}';
+    }
 }

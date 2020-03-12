@@ -1,0 +1,10 @@
+com\example\app1\config\SwaggerConfig.class
+com\example\app1\model\ServiceResponse.class
+com\example\app1\service\AppService.class
+com\example\app1\controller\AppController.class
+com\example\app1\service\impl\AppServiceImpl.class
+com\example\app1\model\ResponseModel.class
+com\example\app1\model\RequestModel.class
+com\example\app1\util\StringUtils.class
+com\example\app1\App1Application.class
+com\example\app1\util\ObjectUtils.class

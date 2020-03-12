@@ -1,0 +1,16 @@
+|===
+|Path|Type|Description
+
+|`+num1+`
+|`+Number+`
+|Num1 value
+
+|`+num2+`
+|`+Number+`
+|Num2 value
+
+|`+param+`
+|`+String+`
+|param string
+
+|===

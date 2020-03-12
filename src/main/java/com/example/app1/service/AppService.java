@@ -1,5 +1,7 @@
 package com.example.app1.service;
 
+import org.springframework.stereotype.Service;
+
 
 public interface AppService {
 

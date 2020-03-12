@@ -20,6 +20,13 @@
         <java.version>1.8</java.version>
         <swagger.version>2.7.0</swagger.version>
         <mockito.version>2.18.3</mockito.version>
+
+        <!-- REST DOCS -->
+        <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
+        <docsDirectory>${project.build.directory}/generated-docs</docsDirectory>
+        <staticDocsDirectory>${project.build.outputDirectory}/static/docs</staticDocsDirectory>
+        <asciiDocDirectory>src/docs/asciidocs</asciiDocDirectory>
+        <!-- -->
     </properties>
 
     <dependencies>
@@ -51,11 +58,39 @@
             </exclusions>
         </dependency>
 
+        <!-- REST DOCS -->
         <dependency>
             <groupId>org.springframework.restdocs</groupId>
             <artifactId>spring-restdocs-mockmvc</artifactId>
+            <version>2.0.4.RELEASE</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>spring-mock-mvc</artifactId>
+            <version>4.2.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured-common</artifactId>
+            <version>4.2.0</version>
+        </dependency>
+        <!--
+        <dependency>
+            <groupId>org.springframework.restdocs</groupId>
+            <artifactId>spring-restdocs-restassured</artifactId>
+            <version>2.0.4.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.restdocs</groupId>
+            <artifactId>spring-restdocs-webtestclient</artifactId>
+            <version>2.0.4.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        -->
+        <!-- -->
 
 
         <!-- JUnit 5 -->
@@ -77,10 +112,16 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${swagger.version}</version>
         </dependency>
+
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test-autoconfigure</artifactId>
         </dependency>
 
     </dependencies>
@@ -91,6 +132,83 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+            <!-- REST DOCS -->
+            <plugin>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctor-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <id>generate-docs</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>process-asciidoc</goal>
+                        </goals>
+                        <configuration>
+                            <backend>html</backend>
+                            <doctype>book</doctype>
+                            <attributes>
+                                <snippets>${snippetsDirectory}</snippets>
+                            </attributes>
+                            <sourceDirectory>src/docs/asciidocs</sourceDirectory>
+                            <outputDirectory>${project.build.directory}/generated-docs</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>prepare-package</phase> <!-- asciidoctor ile aynı olmalı  -->
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>
+                                ${project.build.outputDirectory}/static/docs
+                            </outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>
+                                        ${project.build.directory}/generated-docs
+                                    </directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>
+                                ${project.build.outputDirectory}/static/docs
+                            </outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>
+                                        ${project.build.directory}/generated-docs
+                                    </directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            -->
+            <!-- -->
         </plugins>
     </build>
 

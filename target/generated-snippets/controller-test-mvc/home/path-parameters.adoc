@@ -1,0 +1,8 @@
+.+/home/{inp}+
+|===
+|Parameter|Description
+
+|`+inp+`
+|The input of the testy
+
+|===

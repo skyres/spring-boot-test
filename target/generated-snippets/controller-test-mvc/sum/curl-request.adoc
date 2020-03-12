@@ -1,0 +1,6 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/sum' -i -X POST \
+    -H 'Content-Type: application/json' \
+    -d '{"param":"","num1":2,"num2":5}'
+----
