@@ -1,4 +1,3 @@
-com\example\app1\config\SwaggerConfig.class
 com\example\app1\model\ServiceResponse.class
 com\example\app1\service\AppService.class
 com\example\app1\controller\AppController.class

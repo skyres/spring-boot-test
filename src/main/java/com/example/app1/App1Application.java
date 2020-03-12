@@ -6,7 +6,7 @@ import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDoc
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @SpringBootApplication
-@EnableWebMvc
+//@EnableWebMvc
 //@AutoConfigureRestDocs(outputDir = "target/snippets")
 public class App1Application {
 
